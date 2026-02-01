@@ -13,6 +13,13 @@ public class MainSignatureTest {
 
     /**
      * Test that getUserName method exists with correct signature
+     * Required:
+     * - Class: mcon364.las.touro.edu.Main
+     * - Method: public static Optional<String> getUserName()
+     *
+     * Behavior (in autograder):
+     * - The environment variable USER is set (e.g., "Chana")
+     * - getUserName() must return Optional.of(the env value)
      */
     @Test
     void main_has_static_getUserName_returning_optional() throws Exception {
