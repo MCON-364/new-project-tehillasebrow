@@ -14,7 +14,7 @@ public class MainSignatureTest {
     /**
      * Test that getUserName method exists with correct signature
      * Required:
-     * - Class: mcon364.las.touro.edu.Main
+     * - Class: mcon364.las.touro.edu.demo.Main
      * - Method: public static Optional<String> getUserName()
      *
      * Behavior (in autograder):
@@ -23,7 +23,7 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_getUserName_returning_optional() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
@@ -45,7 +45,7 @@ public class MainSignatureTest {
         assertNotNull(expected, "Autograder misconfigured: USERNAME env var must be set");
         assertFalse(expected.isBlank(), "Autograder misconfigured: USERNAME must be non-blank");
 
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
         @SuppressWarnings("unchecked")
@@ -61,7 +61,7 @@ public class MainSignatureTest {
      */
     @Test
     void getUserName_returns_empty_optional_when_var_not_present() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
         @SuppressWarnings("unchecked")
@@ -76,7 +76,7 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_getGreeting_returning_string() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
@@ -93,7 +93,7 @@ public class MainSignatureTest {
         String userName = System.getenv("USERNAME");
         assertNotNull(userName, "USERNAME env var must be set for this test");
 
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
         String result = (String) m.invoke(null, "USERNAME");
@@ -108,7 +108,7 @@ public class MainSignatureTest {
      */
     @Test
     void getGreeting_returns_default_greeting_when_env_var_not_present() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
         String result = (String) m.invoke(null, "NO_SUCH_ENV_VAR_12345");
@@ -123,7 +123,7 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_processValues() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
@@ -137,7 +137,7 @@ public class MainSignatureTest {
      */
     @Test
     void processValues_executes_successfully() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         List<List<Integer>> testData = List.of(
@@ -155,7 +155,7 @@ public class MainSignatureTest {
      */
     @Test
     void processValues_handles_special_values() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         // Test with 0 (should trigger labeled continue)
