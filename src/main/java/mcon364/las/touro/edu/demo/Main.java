@@ -12,7 +12,7 @@ public class Main {
     public static String getGreeting(String envVarName){
         Optional <String> s=getUserName(envVarName);
        // switch (s){
-            //case :
+            //case : if s in null, return "Guest" else return "Hello Alien!"
 
       //  }
 
