@@ -14,7 +14,7 @@ public class MainSignatureTest {
     /**
      * Test that getUserName method exists with correct signature
      * Required:
-     * - Class: mcon364.las.touro.edu.Main
+     * - Class: mcon364.las.touro.edu.demo.Main
      * - Method: public static Optional<String> getUserName()
      *
      * Behavior (in autograder):
@@ -23,7 +23,7 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_getUserName_returning_optional() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
@@ -45,7 +45,7 @@ public class MainSignatureTest {
         assertNotNull(expected, "Autograder misconfigured: USERNAME env var must be set");
         assertFalse(expected.isBlank(), "Autograder misconfigured: USERNAME must be non-blank");
 
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
         @SuppressWarnings("unchecked")
@@ -61,7 +61,7 @@ public class MainSignatureTest {
      */
     @Test
     void getUserName_returns_empty_optional_when_var_not_present() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getUserName", String.class);
 
         @SuppressWarnings("unchecked")
@@ -76,7 +76,7 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_getGreeting_returning_string() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
@@ -93,14 +93,14 @@ public class MainSignatureTest {
         String userName = System.getenv("USERNAME");
         assertNotNull(userName, "USERNAME env var must be set for this test");
 
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
         String result = (String) m.invoke(null, "USERNAME");
 
         assertNotNull(result, "getGreeting must not return null");
         assertTrue(result.contains(userName),
-            "Greeting should contain the username: expected to contain '" + userName + "', but got '" + result + "'");
+                "Greeting should contain the username: expected to contain '" + userName + "', but got '" + result + "'");
     }
 
     /**
@@ -108,14 +108,14 @@ public class MainSignatureTest {
      */
     @Test
     void getGreeting_returns_default_greeting_when_env_var_not_present() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("getGreeting", String.class);
 
         String result = (String) m.invoke(null, "NO_SUCH_ENV_VAR_12345");
 
         assertNotNull(result, "getGreeting must not return null");
         assertTrue(result.contains("Guest") || result.contains("World"),
-            "Greeting should contain 'Guest' or 'World' when env var not present, but got: " + result);
+                "Greeting should contain 'Guest' or 'World' when env var not present, but got: " + result);
     }
 
     /**
@@ -123,13 +123,13 @@ public class MainSignatureTest {
      */
     @Test
     void main_has_static_processValues() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
 
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         assertTrue(Modifier.isStatic(m.getModifiers()), "processValues must be static");
         assertTrue(Modifier.isPublic(m.getModifiers()), "processValues must be public");
-        assertEquals(void.class, m.getReturnType(), "processValues must return void");
+        assertEquals(int.class, m.getReturnType(), "processValues must return Integer");
     }
 
     /**
@@ -137,17 +137,17 @@ public class MainSignatureTest {
      */
     @Test
     void processValues_executes_successfully() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         List<List<Integer>> testData = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 5, 6)
+                List.of(1, 2, 3),
+                List.of(4, 5, 6)
         );
 
         // Should not throw any exception
         assertDoesNotThrow(() -> m.invoke(null, testData),
-            "processValues should execute without throwing exceptions");
+                "processValues should execute without throwing exceptions");
     }
 
     /**
@@ -155,27 +155,27 @@ public class MainSignatureTest {
      */
     @Test
     void processValues_handles_special_values() throws Exception {
-        Class<?> clazz = Class.forName("mcon364.las.touro.edu.Main");
+        Class<?> clazz = Class.forName("mcon364.las.touro.edu.demo.Main");
         Method m = clazz.getDeclaredMethod("processValues", List.class);
 
         // Test with 0 (should trigger labeled continue)
         List<List<Integer>> testDataWithZero = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 0, 6),
-            List.of(7, 8, 9)
+                List.of(1, 2, 3),
+                List.of(4, 0, 6),
+                List.of(7, 8, 9)
         );
 
         assertDoesNotThrow(() -> m.invoke(null, testDataWithZero),
-            "processValues should handle 0 values with labeled continue");
+                "processValues should handle 0 values with labeled continue");
 
         // Test with 99 (should trigger labeled break)
         List<List<Integer>> testDataWithNinetyNine = List.of(
-            List.of(1, 2, 3),
-            List.of(4, 99, 6),
-            List.of(7, 8, 9)
+                List.of(1, 2, 3),
+                List.of(4, 99, 6),
+                List.of(7, 8, 9)
         );
 
         assertDoesNotThrow(() -> m.invoke(null, testDataWithNinetyNine),
-            "processValues should handle 99 values with labeled break");
+                "processValues should handle 99 values with labeled break");
     }
 }

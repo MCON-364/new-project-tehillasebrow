@@ -1,4 +1,3 @@
-```java
 package mcon364.las.touro.edu;
 
 import java.util.Optional;
@@ -65,7 +64,7 @@ public class Demo {
             .orElse("no match");
         System.out.println("\n7. Chaining map() and filter():");
         System.out.println("   Result: " + result);
- 
+
         // 8. Using orElseThrow()
         System.out.println("\n8. Using orElseThrow():");
         try {
@@ -303,7 +302,7 @@ public class Demo {
 
     public void showLabelledBreak() {
         System.out.println("\n=== Labelled Break Demonstration ===\n");
-        
+
         // 1. Without labelled break - breaks only inner loop
         System.out.println("1. Regular break (no label):");
         for (int i = 1; i <= 3; i++) {
@@ -315,7 +314,7 @@ public class Demo {
             }
             System.out.println("   After inner loop for i=" + i);
         }
-        
+
         // 2. With labelled break - breaks out of outer loop
         System.out.println("\n2. Labelled break (breaks outer loop):");
         outerLoop:
@@ -330,7 +329,7 @@ public class Demo {
             System.out.println("   After inner loop for i=" + i); // Won't print when break outerLoop is executed
         }
         System.out.println("   Exited outer loop");
-        
+
         // 3. Practical example: Finding a value in a 2D array
         System.out.println("\n3. Practical example - Searching in 2D array:");
         int[][] numbers = {
@@ -340,7 +339,7 @@ public class Demo {
         };
         int target = 7;
         boolean found = false;
-        
+
         searchLoop:
         for (int row = 0; row < numbers.length; row++) {
             for (int col = 0; col < numbers[row].length; col++) {
@@ -355,7 +354,7 @@ public class Demo {
         if (!found) {
             System.out.println("   " + target + " not found");
         }
-        
+
         // 4. Multiple nested loops with different break points
         System.out.println("\n4. Multiple levels of nesting with labels:");
         outer:
@@ -378,7 +377,7 @@ public class Demo {
             }
         }
         System.out.println("   Finished loop structure");
-        
+
         // 5. Real-world example: Input validation
         System.out.println("\n5. Real-world example - Validating grid data:");
         String[][] dataGrid = {
@@ -386,7 +385,7 @@ public class Demo {
             {"OK", "ERROR", "OK"},
             {"OK", "OK", "OK"}
         };
-        
+
         boolean hasError = false;
         validationLoop:
         for (int row = 0; row < dataGrid.length; row++) {
@@ -400,7 +399,7 @@ public class Demo {
             }
         }
         System.out.println("   Validation result: " + (hasError ? "FAILED" : "PASSED"));
-        
+
         // 6. Breaking from switch inside a loop
         System.out.println("\n6. Break from switch vs break from loop:");
         processLoop:
@@ -418,7 +417,7 @@ public class Demo {
             System.out.println("   Status: " + status);
         }
         System.out.println("   Loop terminated");
-        
+
         System.out.println("\n=== End of Labelled Break Demonstration ===");
     }
 
@@ -437,5 +436,3 @@ public class Demo {
         demo.showLabelledBreak();
     }
 }
-
-```
