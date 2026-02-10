@@ -65,7 +65,7 @@ public class Demo {
             .orElse("no match");
         System.out.println("\n7. Chaining map() and filter():");
         System.out.println("   Result: " + result);
-
+ 
         // 8. Using orElseThrow()
         System.out.println("\n8. Using orElseThrow():");
         try {
